@@ -11,14 +11,35 @@
     --accent: #E94D4D;
     --center-gap-top: 190px;
     --center-gap-bottom: 140px;
+    
     --corner-gap-large: 140px;
     --corner-gap-small: 100px;
+
     --corner-bl-top: 88%;
     --corner-bl-left: 20%;
     --corner-bl-width: 80%;
+
     --corner-tr-top: 12%;
     --corner-tr-left: 80%;
     --corner-tr-width: 70%;
+
+    --bottom-left-top: 100%;
+    --bottom-left-left: 38%;
+    --bottom-left-width: 55%;
+
+    --top-bottom-right-top: 29%;
+    --top-bottom-right-left: 80%;
+    --top-bottom-right-width: 55%;
+
+    --gap-top-position: 25%;
+    --gap-top-left: 32.5%;
+    --gap-top-width: 80%;
+    --gap-top-size: 70px;
+
+    --accent-line-top: 41%;
+    --accent-line-left: 64.3%;
+    --accent-line-width: 540px;
+    --accent-line-height: 30px;
 }
 
 
@@ -141,6 +162,52 @@ body {
     left: -10%;
 }
 
+.line-bottom-left-line,
+.line-bottom-right-line,
+.line-top-gap {
+    position: absolute;
+    height: 5px;
+    transform-origin: center;
+    transform: translate(-50%, -50%) rotate(-35.5deg);
+    background: var(--black);
+}
+
+.line-bottom-left-line {
+    top: var(--bottom-left-top);
+    left: var(--bottom-left-left);
+    width: var(--bottom-left-width);
+}
+
+.line-bottom-right-line {
+    top: var(--top-bottom-right-top);
+    left: var(--top-bottom-right-left);
+    width: var(--top-bottom-right-width);
+}
+
+.line-top-gap {
+    top: var(--gap-top-position);
+    left: var(--gap-top-left);
+    width: var(--gap-top-width);
+    background: linear-gradient(
+        90deg,
+        var(--black) 0,
+        var(--black) calc(50% - var(--gap-top-size)),
+        transparent calc(50% - var(--gap-top-size)),
+        transparent calc(50% + var(--gap-top-size)),
+        var(--black) calc(50% + var(--gap-top-size)),
+        var(--black) 100%
+    );
+}
+
+.line-accent {
+    top: var(--accent-line-top);
+    left: var(--accent-line-left);
+    width: var(--accent-line-width);
+    height: var(--accent-line-height);
+    transform: translate(-50%, -50%) rotate(-35.5deg);
+    background: var(--accent);
+    border-radius: 0px;
+}
 
 .title-block {
     /* Container no longer needed - each piece positioned independently */
@@ -190,14 +257,6 @@ body {
     font-size: clamp(3rem, 7vw, 6rem);
     text-transform: uppercase;
     letter-spacing: 0.08em;
-}
-
-.accent-bar {
-    width: 11rem;
-    height: 0.65rem;
-    background: var(--accent);
-    align-self: flex-end;
-    margin-top: -0.3rem;
 }
 
 .diagonal-nav {
