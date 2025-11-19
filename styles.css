@@ -58,6 +58,14 @@
     --art-direction-top: 52.5%;
     --art-direction-left: 17.5%;
 
+    /* hero type link positioning */
+    --hero-type-top: 85.5%;
+    --hero-type-left: 61.5%;
+
+    /* credits box positioning */
+    --credits-bottom: 8%;
+    --credits-right: 5%;
+
     /* font link positioning */
     --font-link-bottom: 4%;
     --font-link-left: 3%;
@@ -401,14 +409,13 @@ body {
     max-width: 160px;
 }
 
-/* hero type label - commented out for now */
-/* 
-.hero-type-label {
-    bottom: 38%;
-    left: 15%;
-    transform: rotate(var(--diagonal-angle));
+/* hero type box styled like other info boxes */
+.hero-type-link {
+    position: absolute;
+    top: var(--hero-type-top);
+    left: var(--hero-type-left);
+    transform: translate(-50%, -50%);
 }
-*/
 
 /* art direction box styled like typographic flower box */
 .art-direction-label {
@@ -454,6 +461,40 @@ body {
     max-width: 100%;
     color: var(--black);
     transition: color 0.3s ease;
+}
+
+/* credits box with diagonal rotation */
+.credits-box {
+    position: absolute;
+    bottom: var(--credits-bottom);
+    right: var(--credits-right);
+    transform: rotate(var(--diagonal-angle));
+    background: var(--cream);
+    border: 2px solid var(--black);
+    padding: 1rem 1.5rem;
+    z-index: 3;
+    text-align: center;
+}
+
+.credits-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--black);
+}
+
+.credits-year {
+    font-size: 0.8rem;
+    font-weight: 400;
+    margin: 0.2rem 0;
+    color: var(--black);
+}
+
+.credits-info {
+    font-size: 0.75rem;
+    font-weight: 400;
+    margin: 0;
+    color: var(--black);
 }
 
 /* mobile and tablet responsive styles */
@@ -560,10 +601,50 @@ body {
         font-size: clamp(1rem, 3vw, 1.2rem);
     }
 
-    /* hide info boxes and labels on mobile to reduce clutter */
-    .info-box,
-    .label {
-        display: none;
+    /* hero type link positioned under noto serif centered */
+    .hero-type-link {
+        position: fixed;
+        top: 3.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: clamp(0.9rem, 3vw, 1.1rem);
+    }
+
+    /* show info boxes on mobile below title */
+    .info-box {
+        position: relative;
+        max-width: 100%;
+        margin: 2rem auto 1rem;
+        transform: none;
+        top: auto;
+        right: auto;
+        left: auto;
+    }
+
+    /* art direction box on mobile */
+    .art-direction-label {
+        position: relative;
+        max-width: 100%;
+        margin: 1rem auto 2rem;
+        transform: none;
+        top: auto;
+        left: auto;
+    }
+
+    .title-stage {
+        height: auto;
+        min-height: 100vh;
+        padding-bottom: 8rem;
+    }
+
+    /* credits box on mobile - bottom center, no rotation */
+    .credits-box {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        margin: 2rem auto;
+        transform: none;
+        max-width: 200px;
     }
 }
 
