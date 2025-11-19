@@ -1,0 +1,309 @@
+/* CSS Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --cream: #E8E3D6;
+    --black: #1a1a1a;
+    --red-accent: #E63946;
+    --blue-accent: #4A90E2;
+    --line-weight: 2px;
+}
+
+body {
+    font-family: 'Noto Serif', serif;
+    background-color: var(--cream);
+    color: var(--black);
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Diagonal Lines Background - Jen Simmons Style */
+.diagonal-lines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.line {
+    position: absolute;
+    background: var(--black);
+    height: var(--line-weight);
+    width: 200%;
+    transform-origin: left center;
+}
+
+.line-1 {
+    top: -10%;
+    left: -50%;
+    transform: rotate(45deg);
+}
+
+.line-2 {
+    top: 10%;
+    left: -50%;
+    transform: rotate(45deg);
+}
+
+.line-3 {
+    top: 30%;
+    left: -50%;
+    transform: rotate(45deg);
+}
+
+.line-4 {
+    top: 50%;
+    left: -50%;
+    transform: rotate(45deg);
+}
+
+.line-5 {
+    top: 70%;
+    left: -50%;
+    transform: rotate(45deg);
+}
+
+.line-6 {
+    top: 90%;
+    left: -50%;
+    transform: rotate(45deg);
+}
+
+/* Home Link */
+.home-link {
+    position: absolute;
+    top: 2rem;
+    left: 3rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    color: var(--black);
+    z-index: 10;
+    transition: color 0.3s ease;
+}
+
+.home-link:hover {
+    color: var(--red-accent);
+}
+
+/* Top Navigation - Horizontal Slanted */
+.top-nav {
+    position: absolute;
+    top: 4%;
+    right: 16%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1.8rem;
+    z-index: 10;
+    transform: rotate(-45deg);
+    transform-origin: top right;
+}
+
+.top-nav a {
+    text-decoration: none;
+    color: var(--black);
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    transition: color 0.3s ease;
+    line-height: 1.1;
+    text-align: right;
+}
+
+.top-nav a:hover {
+    color: var(--red-accent);
+}
+
+/* Site Title - Rotated Diagonally */
+.site-title {
+    position: absolute;
+    top: 38%;
+    left: 32%;
+    transform: rotate(-45deg);
+    transform-origin: center left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 0.85;
+    z-index: 5;
+}
+
+.title-line {
+    display: block;
+    position: relative;
+}
+
+.title-line:nth-child(3) {
+    position: relative;
+}
+
+.red-underline {
+    position: absolute;
+    bottom: 0.1em;
+    left: 0;
+    right: -0.5em;
+    width: 105%;
+    height: 0.18em;
+    background: var(--red-accent);
+    z-index: -1;
+}
+
+/* Blue Dot */
+.blue-dot {
+    position: absolute;
+    top: 33%;
+    left: 57%;
+    width: 16px;
+    height: 16px;
+    background: var(--blue-accent);
+    border-radius: 50%;
+    z-index: 6;
+}
+
+/* Hero Type */
+.hero-type {
+    position: absolute;
+    top: 62%;
+    left: 18%;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--black);
+    text-decoration: none;
+    z-index: 5;
+    transition: color 0.3s ease;
+    transform: rotate(-45deg);
+    transform-origin: left center;
+}
+
+.hero-type:hover {
+    color: var(--red-accent);
+}
+
+/* Art Direction */
+.art-direction {
+    position: absolute;
+    top: 68%;
+    left: 36%;
+    transform: rotate(-45deg);
+    z-index: 5;
+    max-width: 280px;
+}
+
+.art-direction h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.art-direction p {
+    font-size: 0.65rem;
+    font-style: italic;
+    line-height: 1.3;
+}
+
+/* Typographic Flower */
+.typographic-flower {
+    position: absolute;
+    top: 42%;
+    right: 8%;
+    z-index: 5;
+    max-width: 280px;
+}
+
+.typographic-flower h2 {
+    font-size: 1.9rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+}
+
+.typographic-flower .subtitle {
+    font-size: 1rem;
+    font-style: italic;
+    margin-bottom: 0.6rem;
+}
+
+.typographic-flower .description {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    color: var(--red-accent);
+}
+
+/* Noto Serif Label */
+.noto-serif-label {
+    position: absolute;
+    bottom: 3%;
+    left: 2%;
+    font-size: 1.8rem;
+    font-weight: 700;
+    z-index: 5;
+    transform: rotate(-45deg);
+    transform-origin: left bottom;
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+    .site-title {
+        font-size: 4rem;
+    }
+    
+    .hero-type {
+        font-size: 2rem;
+    }
+    
+    .typographic-flower h2 {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .site-title {
+        font-size: 3rem;
+    }
+    
+    .hero-type {
+        font-size: 1.8rem;
+        bottom: 25%;
+    }
+    
+    .art-direction {
+        bottom: 10%;
+        left: 25%;
+    }
+    
+    .typographic-flower {
+        right: 5%;
+        max-width: 240px;
+    }
+}
+
+@media (max-width: 768px) {
+    .site-title {
+        font-size: 2.5rem;
+    }
+    
+    .top-nav a {
+        font-size: 0.75rem;
+    }
+    
+    .hero-type {
+        font-size: 1.5rem;
+    }
+    
+    .art-direction h2,
+    .typographic-flower h2 {
+        font-size: 1.3rem;
+    }
+}
