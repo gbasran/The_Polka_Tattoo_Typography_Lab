@@ -1,4 +1,4 @@
-/* CSS Reset & Base Styles */
+/* Base reset */
 * {
     margin: 0;
     padding: 0;
@@ -8,302 +8,294 @@
 :root {
     --cream: #E8E3D6;
     --black: #1a1a1a;
-    --red-accent: #E63946;
-    --blue-accent: #4A90E2;
-    --line-weight: 2px;
+    --accent: #E94D4D;
+    --center-gap-top: 190px;
+    --center-gap-bottom: 140px;
+    --corner-gap-large: 140px;
+    --corner-gap-small: 100px;
+    --corner-bl-top: 88%;
+    --corner-bl-left: 20%;
+    --corner-bl-width: 80%;
+    --corner-tr-top: 12%;
+    --corner-tr-left: 80%;
+    --corner-tr-width: 70%;
+}
+
+
+html, body {
+    height: 100%;
 }
 
 body {
     font-family: 'Noto Serif', serif;
-    background-color: var(--cream);
+    background: var(--cream);
     color: var(--black);
-    overflow-x: hidden;
     min-height: 100vh;
-    position: relative;
+    overflow: hidden;
 }
 
-/* Diagonal Lines Background - Jen Simmons Style */
-.diagonal-lines {
-    position: fixed;
-    top: 0;
-    left: 0;
+.title-stage {
+    position: relative;
+    height: 100vh;
     width: 100%;
-    height: 100%;
+    overflow: hidden;
+}
+
+.line-grid {
+    position: absolute;
+    inset: 0;
     pointer-events: none;
-    z-index: 0;
+}
+
+.title-content {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 4vw;
+    overflow: hidden;
 }
 
 .line {
     position: absolute;
+    height: 5px;
     background: var(--black);
-    height: var(--line-weight);
-    width: 200%;
-    transform-origin: left center;
+    transform-origin: center;
 }
 
-.line-1 {
-    top: -10%;
-    left: -50%;
-    transform: rotate(45deg);
-}
-
-.line-2 {
-    top: 10%;
-    left: -50%;
-    transform: rotate(45deg);
-}
-
-.line-3 {
-    top: 30%;
-    left: -50%;
-    transform: rotate(45deg);
-}
-
-.line-4 {
+.line-primary {
     top: 50%;
-    left: -50%;
-    transform: rotate(45deg);
+    left: 50%;
+    width: 141.4%; /* Diagonal across viewport = sqrt(2) * 100% */
+    transform: translate(-50%, -50%) rotate(-35.5deg);
 }
 
-.line-5 {
-    top: 70%;
-    left: -50%;
-    transform: rotate(45deg);
+/* Center diagonal line with fixed opening */
+.line-secondary {
+    top: 50%;
+    left: 50%;
+    width: 141.4%;
+    transform: translate(-50%, -50%) rotate(35.5deg);
+    background: linear-gradient(
+        90deg,
+        var(--black) 0,
+        var(--black) calc(50% - var(--center-gap-top)),
+        transparent calc(50% - var(--center-gap-top)),
+        transparent calc(50% + var(--center-gap-bottom)),
+        var(--black) calc(50% + var(--center-gap-bottom)),
+        var(--black) 100%
+    );
 }
 
-.line-6 {
-    top: 90%;
-    left: -50%;
-    transform: rotate(45deg);
+/* Corner diagonals */
+.line-corner-bottom-left,
+.line-corner-top-right {
+    width: 210%;
+    transform: rotate(35.5deg);
+    background: linear-gradient(
+        90deg,
+        var(--black) 0,
+        var(--black) calc(50% - var(--corner-gap-large)),
+        transparent calc(50% - var(--corner-gap-large)),
+        transparent calc(50% + var(--corner-gap-large)),
+        var(--black) calc(50% + var(--corner-gap-large)),
+        var(--black) 100%
+    );
 }
 
-/* Home Link */
-.home-link {
-    position: absolute;
-    top: 2rem;
-    left: 3rem;
-    font-size: 0.9rem;
-    font-weight: 400;
-    letter-spacing: 0.05em;
-    text-decoration: none;
-    color: var(--black);
-    z-index: 10;
-    transition: color 0.3s ease;
+.line-corner-bottom-right,
+.line-corner-top-left {
+    width: 210%;
+    transform: rotate(35.5deg);
+    background: linear-gradient(
+        90deg,
+        transparent 0,
+        transparent calc(50% - var(--corner-gap-small)),
+        var(--black) calc(50% - var(--corner-gap-small)),
+        var(--black) calc(50% + var(--corner-gap-small)),
+        transparent calc(50% + var(--corner-gap-small)),
+        transparent 100%
+    );
 }
 
-.home-link:hover {
-    color: var(--red-accent);
+.line-corner-bottom-left {
+    top: var(--corner-bl-top);
+    left: var(--corner-bl-left);
+    width: var(--corner-bl-width);
+    transform: translate(-50%, -50%) rotate(35.5deg);
 }
 
-/* Top Navigation - Horizontal Slanted */
-.top-nav {
-    position: absolute;
-    top: 4%;
-    right: 16%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 1.8rem;
-    z-index: 10;
-    transform: rotate(-45deg);
-    transform-origin: top right;
+.line-corner-top-right {
+    top: var(--corner-tr-top);
+    left: var(--corner-tr-left);
+    width: var(--corner-tr-width);
+    transform: translate(-50%, -50%) rotate(35.5deg);
 }
 
-.top-nav a {
-    text-decoration: none;
-    color: var(--black);
-    font-size: 0.65rem;
-    font-weight: 400;
-    letter-spacing: 0.08em;
-    transition: color 0.3s ease;
-    line-height: 1.1;
-    text-align: right;
+.line-corner-bottom-right {
+    bottom: -6%;
+    right: -10%;
 }
 
-.top-nav a:hover {
-    color: var(--red-accent);
+.line-corner-top-left {
+    top: -6%;
+    left: -10%;
 }
 
-/* Site Title - Rotated Diagonally */
+
+.title-block {
+    /* Container no longer needed - each piece positioned independently */
+}
+
 .site-title {
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 0.82;
+}
+
+/* Independent positioning for each title piece */
+.line-1 { /* THE POLKA */
     position: absolute;
-    top: 38%;
-    left: 32%;
-    transform: rotate(-45deg);
+    top: calc(50% - 10rem); /* Above center line */
+    left:47.5%;
+    transform: translate(-50%, 0) rotate(-35.5deg);
+    font-size: clamp(3rem, 7vw, 6rem);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.line-2 { /* TATTOO */
+    position: absolute;
+    top: calc(50% - 7.5rem); /* Below THE POLKA, still above center */
+    left: 52%; /* Same left = centered under THE POLKA */
+    transform: translate(-50%, 0) rotate(-35.5deg);
+    font-size: clamp(3rem, 7vw, 6rem);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.line-3 { /* TYPOGRAPHY */
+    position: absolute;
+    top: calc(50% - 0.5rem); /* Below center line */
+    left: 51.5%;
+    transform: translate(-50%, 0) rotate(-35.5deg);
+    font-size: clamp(3rem, 7vw, 6rem);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.line-4 { /* LAB */
+    position: absolute;
+    top: calc(50% + 9rem); /* Further below */
+    left: 47.5%;
+    transform: translate(-50%, 0) rotate(-35.5deg);
+    font-size: clamp(3rem, 7vw, 6rem);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.accent-bar {
+    width: 11rem;
+    height: 0.65rem;
+    background: var(--accent);
+    align-self: flex-end;
+    margin-top: -0.3rem;
+}
+
+.diagonal-nav {
+    position: absolute;
+    top: 18%;
+    right: 10%;
+    transform: rotate(-26deg);
     transform-origin: center left;
+}
+
+.diagonal-nav ul {
+    list-style: none;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    font-size: 5rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    line-height: 0.85;
-    z-index: 5;
+    gap: 2rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
 }
 
-.title-line {
-    display: block;
-    position: relative;
-}
-
-.title-line:nth-child(3) {
-    position: relative;
-}
-
-.red-underline {
-    position: absolute;
-    bottom: 0.1em;
-    left: 0;
-    right: -0.5em;
-    width: 105%;
-    height: 0.18em;
-    background: var(--red-accent);
-    z-index: -1;
-}
-
-/* Blue Dot */
-.blue-dot {
-    position: absolute;
-    top: 33%;
-    left: 57%;
-    width: 16px;
-    height: 16px;
-    background: var(--blue-accent);
-    border-radius: 50%;
-    z-index: 6;
-}
-
-/* Hero Type */
-.hero-type {
-    position: absolute;
-    top: 62%;
-    left: 18%;
-    font-size: 2.5rem;
-    font-weight: 700;
+.diagonal-nav a {
     color: var(--black);
     text-decoration: none;
-    z-index: 5;
-    transition: color 0.3s ease;
-    transform: rotate(-45deg);
-    transform-origin: left center;
 }
 
-.hero-type:hover {
-    color: var(--red-accent);
+.diagonal-nav a:hover {
+    color: var(--accent);
 }
 
-/* Art Direction */
-.art-direction {
+.label {
     position: absolute;
-    top: 68%;
-    left: 36%;
-    transform: rotate(-45deg);
-    z-index: 5;
-    max-width: 280px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    transform: rotate(-26deg);
+    transform-origin: left top;
 }
 
-.art-direction h2 {
-    font-size: 1.6rem;
-    font-weight: 700;
-    margin-bottom: 0.4rem;
+.hero-type {
+    bottom: 30%;
+    left: 28%;
 }
 
-.art-direction p {
-    font-size: 0.65rem;
-    font-style: italic;
+.art-direction {
+    bottom: 22%;
+    left: 44%;
+    max-width: 200px;
+    text-transform: none;
+}
+
+.art-direction > p:first-child {
+    text-transform: uppercase;
+}
+
+.art-direction .label-note {
+    margin-top: 0.4rem;
+    font-size: 0.78rem;
     line-height: 1.3;
 }
 
-/* Typographic Flower */
-.typographic-flower {
+.noto-serif {
+    bottom: 8%;
+    left: 18%;
+}
+
+.info-card {
     position: absolute;
-    top: 42%;
-    right: 8%;
-    z-index: 5;
-    max-width: 280px;
+    top: 40%;
+    right: 10%;
+    max-width: 260px;
+    transform: rotate(-26deg);
+    transform-origin: left top;
 }
 
-.typographic-flower h2 {
-    font-size: 1.9rem;
-    font-weight: 700;
-    margin-bottom: 0.2rem;
+.type-card h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0.25rem;
 }
 
-.typographic-flower .subtitle {
-    font-size: 1rem;
+.info-sub {
     font-style: italic;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.5rem;
 }
 
-.typographic-flower .description {
-    font-size: 0.8rem;
+.info-copy {
+    font-size: 0.95rem;
     line-height: 1.4;
-    color: var(--red-accent);
 }
 
-/* Noto Serif Label */
-.noto-serif-label {
-    position: absolute;
-    bottom: 3%;
-    left: 2%;
-    font-size: 1.8rem;
-    font-weight: 700;
-    z-index: 5;
-    transform: rotate(-45deg);
-    transform-origin: left bottom;
-}
+@media (max-width: 900px) {
+    body {
+        overflow: auto;
+    }
 
-/* Responsive Design */
-@media (max-width: 1400px) {
-    .site-title {
-        font-size: 4rem;
+    .title-content {
+        padding: 2rem;
     }
-    
-    .hero-type {
-        font-size: 2rem;
-    }
-    
-    .typographic-flower h2 {
-        font-size: 1.6rem;
-    }
-}
 
-@media (max-width: 1024px) {
-    .site-title {
-        font-size: 3rem;
-    }
-    
-    .hero-type {
-        font-size: 1.8rem;
-        bottom: 25%;
-    }
-    
-    .art-direction {
-        bottom: 10%;
-        left: 25%;
-    }
-    
-    .typographic-flower {
-        right: 5%;
-        max-width: 240px;
-    }
-}
-
-@media (max-width: 768px) {
-    .site-title {
-        font-size: 2.5rem;
-    }
-    
-    .top-nav a {
-        font-size: 0.75rem;
-    }
-    
-    .hero-type {
-        font-size: 1.5rem;
-    }
-    
-    .art-direction h2,
-    .typographic-flower h2 {
-        font-size: 1.3rem;
+    .diagonal-nav ul {
+        gap: 1rem;
+        font-size: 0.7rem;
     }
 }
