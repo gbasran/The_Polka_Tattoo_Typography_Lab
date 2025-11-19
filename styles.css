@@ -54,6 +54,10 @@
     --nav-top: 46.75%;
     --nav-left: 19.5%;
 
+    /* art direction label positioning */
+    --art-direction-top: 52.5%;
+    --art-direction-left: 17.5%;
+
     /* font link positioning */
     --font-link-bottom: 4%;
     --font-link-left: 3%;
@@ -318,6 +322,140 @@ body {
     transition: color 0.25s ease;
 }
 
+/* info boxes for content sections */
+.info-box {
+    position: absolute;
+    background: var(--cream);
+    border: 2px solid var(--black);
+    padding: 1.5rem 2rem;
+    z-index: 3;
+    max-width: 280px;
+    text-decoration: none;
+    color: var(--black);
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.info-box:hover {
+    background: var(--black);
+    color: var(--cream);
+    cursor: pointer;
+}
+
+.info-box:hover h2,
+.info-box:hover .subtitle,
+.info-box:hover .description {
+    color: var(--cream);
+}
+
+.info-box h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+    line-height: 1.2;
+    color: var(--black);
+    transition: color 0.3s ease;
+}
+
+.info-box .subtitle {
+    font-size: 1rem;
+    font-style: italic;
+    margin-bottom: 0.8rem;
+    font-weight: 400;
+    color: var(--black);
+    transition: color 0.3s ease;
+}
+
+.info-box .description {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    font-weight: 400;
+    color: var(--black);
+    transition: color 0.3s ease;
+}
+
+/* typographic flower box positioning */
+.typographic-flower-box {
+    top: 52%;
+    right: 5%;
+    transform: translateY(-50%);
+}
+
+/* label elements for hero type and art direction */
+.label {
+    position: absolute;
+    z-index: 3;
+}
+
+.label p {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.label .description-text {
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-top: 0.3rem;
+    max-width: 160px;
+}
+
+/* hero type label - commented out for now */
+/* 
+.hero-type-label {
+    bottom: 38%;
+    left: 15%;
+    transform: rotate(var(--diagonal-angle));
+}
+*/
+
+/* art direction box styled like typographic flower box */
+.art-direction-label {
+    position: absolute;
+    background: var(--cream);
+    border: 2px solid var(--black);
+    padding: 1.2rem 1.5rem;
+    z-index: 3;
+    max-width: 220px;
+    top: var(--art-direction-top);
+    left: var(--art-direction-left);
+    text-decoration: none;
+    color: var(--black);
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.art-direction-label:hover {
+    background: var(--black);
+    color: var(--cream);
+    cursor: pointer;
+}
+
+.art-direction-label:hover p,
+.art-direction-label:hover .description-text {
+    color: var(--cream);
+}
+
+.art-direction-label p {
+    color: var(--black);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 0.3rem 0;
+    line-height: 1.2;
+    transition: color 0.3s ease;
+}
+
+.art-direction-label .description-text {
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-top: 0.3rem;
+    max-width: 100%;
+    color: var(--black);
+    transition: color 0.3s ease;
+}
+
 /* mobile and tablet responsive styles */
 @media (max-width: 900px) {
     body {
@@ -420,6 +558,12 @@ body {
         transform: translateX(-50%);
         bottom: auto;
         font-size: clamp(1rem, 3vw, 1.2rem);
+    }
+
+    /* hide info boxes and labels on mobile to reduce clutter */
+    .info-box,
+    .label {
+        display: none;
     }
 }
 
