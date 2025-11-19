@@ -1,49 +1,67 @@
-/* Base reset */
+/* basic resets and default stuff */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* css custom properties for easier tweaking */
 :root {
+    /* colors */
     --cream: #E8E3D6;
     --black: #1a1a1a;
     --accent: #E94D4D;
+    
+    /* shared angles and transforms */
+    --diagonal-angle: -35.5deg;
+    --diagonal-width: 141.4%;
+    
+    /* diagonal line gaps */
     --center-gap-top: 190px;
     --center-gap-bottom: 140px;
-    
     --corner-gap-large: 140px;
     --corner-gap-small: 100px;
 
+    /* corner line positions */
     --corner-bl-top: 88%;
     --corner-bl-left: 20%;
     --corner-bl-width: 80%;
-
     --corner-tr-top: 12%;
     --corner-tr-left: 80%;
     --corner-tr-width: 70%;
 
+    /* additional line positions */
     --bottom-left-top: 100%;
     --bottom-left-left: 38%;
     --bottom-left-width: 55%;
-
     --top-bottom-right-top: 29%;
     --top-bottom-right-left: 80%;
     --top-bottom-right-width: 55%;
 
+    /* gap line settings */
     --gap-top-position: 25%;
     --gap-top-left: 32.5%;
     --gap-top-width: 80%;
     --gap-top-size: 70px;
 
+    /* accent line dimensions */
     --accent-line-top: 41%;
     --accent-line-left: 64.3%;
     --accent-line-width: 540px;
     --accent-line-height: 30px;
 
+    /* navigation positioning */
     --nav-top: 46.75%;
     --nav-left: 19.5%;
-    --nav-rotation: -35.5deg;
+
+    /* font link positioning */
+    --font-link-bottom: 4%;
+    --font-link-left: 3%;
+    
+    /* typography sizing */
+    --title-font-size: clamp(3rem, 7vw, 6rem);
+    --nav-font-size: clamp(1.1rem, 1.6vw, 1.6rem);
+    --font-link-font-size: clamp(1.2rem, 1.6vw, 1.7rem);
 }
 
 
@@ -56,9 +74,11 @@ body {
     background: var(--cream);
     color: var(--black);
     min-height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden; /* prevent horizontal scroll */
+    max-width: 100%;
 }
 
+/* main container for everything */
 .title-stage {
     position: relative;
     height: 100vh;
@@ -66,12 +86,14 @@ body {
     overflow: hidden;
 }
 
+/* container for all the diagonal lines */
 .line-grid {
     position: absolute;
     inset: 0;
-    pointer-events: none;
+    pointer-events: none; /* lines dont block clicking */
 }
 
+/* title text container */
 .title-content {
     position: relative;
     height: 100%;
@@ -80,6 +102,7 @@ body {
     overflow: hidden;
 }
 
+/* base styles for all diagonal lines */
 .line {
     position: absolute;
     height: 5px;
@@ -87,19 +110,20 @@ body {
     transform-origin: center;
 }
 
+/* main diagonal line going top-left to bottom-right */
 .line-primary {
     top: 50%;
     left: 50%;
-    width: 141.4%; /* Diagonal across viewport = sqrt(2) * 100% */
-    transform: translate(-50%, -50%) rotate(-35.5deg);
+    width: var(--diagonal-width);
+    transform: translate(-50%, -50%) rotate(var(--diagonal-angle));
 }
 
-/* Center diagonal line with fixed opening */
+/* secondary diagonal with gap in center for title */
 .line-secondary {
     top: 50%;
     left: 50%;
-    width: 141.4%;
-    transform: translate(-50%, -50%) rotate(35.5deg);
+    width: var(--diagonal-width);
+    transform: translate(-50%, -50%) rotate(calc(-1 * var(--diagonal-angle)));
     background: linear-gradient(
         90deg,
         var(--black) 0,
@@ -111,11 +135,11 @@ body {
     );
 }
 
-/* Corner diagonals */
+/* corner diagonal lines with gaps */
 .line-corner-bottom-left,
 .line-corner-top-right {
     width: 210%;
-    transform: rotate(35.5deg);
+    transform: rotate(calc(-1 * var(--diagonal-angle)));
     background: linear-gradient(
         90deg,
         var(--black) 0,
@@ -130,7 +154,7 @@ body {
 .line-corner-bottom-right,
 .line-corner-top-left {
     width: 210%;
-    transform: rotate(35.5deg);
+    transform: rotate(calc(-1 * var(--diagonal-angle)));
     background: linear-gradient(
         90deg,
         transparent 0,
@@ -146,14 +170,14 @@ body {
     top: var(--corner-bl-top);
     left: var(--corner-bl-left);
     width: var(--corner-bl-width);
-    transform: translate(-50%, -50%) rotate(35.5deg);
+    transform: translate(-50%, -50%) rotate(calc(-1 * var(--diagonal-angle)));
 }
 
 .line-corner-top-right {
     top: var(--corner-tr-top);
     left: var(--corner-tr-left);
     width: var(--corner-tr-width);
-    transform: translate(-50%, -50%) rotate(35.5deg);
+    transform: translate(-50%, -50%) rotate(calc(-1 * var(--diagonal-angle)));
 }
 
 .line-corner-bottom-right {
@@ -166,14 +190,11 @@ body {
     left: -10%;
 }
 
+/* additional diagonal lines with rotation */
 .line-bottom-left-line,
 .line-bottom-right-line,
 .line-top-gap {
-    position: absolute;
-    height: 5px;
-    transform-origin: center;
-    transform: translate(-50%, -50%) rotate(-35.5deg);
-    background: var(--black);
+    transform: translate(-50%, -50%) rotate(var(--diagonal-angle));
 }
 
 .line-bottom-left-line {
@@ -203,72 +224,60 @@ body {
     );
 }
 
+/* red accent line crossing the title */
 .line-accent {
     top: var(--accent-line-top);
     left: var(--accent-line-left);
     width: var(--accent-line-width);
     height: var(--accent-line-height);
-    transform: translate(-50%, -50%) rotate(-35.5deg);
+    transform: translate(-50%, -50%) rotate(var(--diagonal-angle));
     background: var(--accent);
-    border-radius: 0px;
 }
 
-.title-block {
-    /* Container no longer needed - each piece positioned independently */
-}
-
+/* main title typography */
 .site-title {
-    font-size: clamp(3rem, 7vw, 6rem);
+    font-size: var(--title-font-size);
     line-height: 0.82;
 }
 
-/* Independent positioning for each title piece */
-.line-1 { /* THE POLKA */
+/* each title line positioned independently along the diagonal */
+.line-1,
+.line-2,
+.line-3,
+.line-4 {
     position: absolute;
-    top: calc(50% - 10rem); /* Above center line */
-    left:47.5%;
-    transform: translate(-50%, 0) rotate(-35.5deg);
-    font-size: clamp(3rem, 7vw, 6rem);
+    font-size: var(--title-font-size);
     text-transform: uppercase;
     letter-spacing: 0.08em;
+    transform: translate(-50%, 0) rotate(var(--diagonal-angle));
 }
 
-.line-2 { /* TATTOO */
-    position: absolute;
-    top: calc(50% - 7.5rem); /* Below THE POLKA, still above center */
-    left: 52%; /* Same left = centered under THE POLKA */
-    transform: translate(-50%, 0) rotate(-35.5deg);
-    font-size: clamp(3rem, 7vw, 6rem);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-}
-
-.line-3 { /* TYPOGRAPHY */
-    position: absolute;
-    top: calc(50% - 0.5rem); /* Below center line */
-    left: 51.5%;
-    transform: translate(-50%, 0) rotate(-35.5deg);
-    font-size: clamp(3rem, 7vw, 6rem);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-}
-
-.line-4 { /* LAB */
-    position: absolute;
-    top: calc(50% + 9rem); /* Further below */
+.line-1 {
+    top: calc(50% - 10rem);
     left: 47.5%;
-    transform: translate(-50%, 0) rotate(-35.5deg);
-    font-size: clamp(3rem, 7vw, 6rem);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
 }
 
+.line-2 {
+    top: calc(50% - 7.5rem);
+    left: 52%;
+}
+
+.line-3 {
+    top: calc(50% - 0.5rem);
+    left: 51.5%;
+}
+
+.line-4 {
+    top: calc(50% + 9rem);
+    left: 47.5%;
+}
+
+/* diagonal navigation menu */
 .diagonal-nav {
     position: absolute;
     top: var(--nav-top);
     left: var(--nav-left);
-    transform: translate(-50%, -50%) rotate(var(--nav-rotation));
-    transform-origin: center;
+    transform: translate(-50%, -50%) rotate(var(--diagonal-angle));
     z-index: 2; /* keep nav above decorative lines */
 }
 
@@ -276,7 +285,7 @@ body {
     list-style: none;
     display: flex;
     gap: clamp(0.8rem, 1.2vw, 1.6rem);
-    font-size: clamp(1.1rem, 1.6vw, 1.6rem);
+    font-size: var(--nav-font-size);
     letter-spacing: 0.08em;
     text-transform: uppercase;
 }
@@ -289,22 +298,152 @@ body {
     transition: color 0.25s ease;
 }
 
-.diagonal-nav li:hover a,
-.diagonal-nav a:focus-visible {
+/* hover states for links */
+.diagonal-nav a:is(:hover, :focus-visible),
+.font-link:is(:hover, :focus-visible) {
     color: var(--accent);
 }
 
+/* font credit link in bottom left */
+.font-link {
+    position: absolute;
+    bottom: var(--font-link-bottom);
+    left: var(--font-link-left);
+    z-index: 2;
+    color: var(--black);
+    font-size: var(--font-link-font-size);
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    transition: color 0.25s ease;
+}
+
+/* mobile and tablet responsive styles */
 @media (max-width: 900px) {
     body {
-        overflow: auto;
+        overflow: auto; /* allow scrolling on mobile */
+    }
+
+    .title-stage {
+        height: auto;
+        min-height: 100vh;
     }
 
     .title-content {
-        padding: 2rem;
+        padding: 2rem 1rem;
+        height: auto;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* hide extra diagonal lines on mobile to keep it clean */
+    .line-corner-bottom-left,
+    .line-corner-top-right,
+    .line-bottom-left-line,
+    .line-bottom-right-line,
+    .line-top-gap {
+        display: none;
+    }
+
+    /* make main diagonals wider to cover screen */
+    .line-primary {
+        width: 200%;
+    }
+
+    /* adjust center gap for smaller screens */
+    .line-secondary {
+        width: 200%;
+        background: linear-gradient(
+            90deg,
+            var(--black) 0,
+            var(--black) calc(50% - 80px),
+            transparent calc(50% - 80px),
+            transparent calc(50% + 80px),
+            var(--black) calc(50% + 80px),
+            var(--black) 100%
+        );
+    }
+
+    .line-accent {
+        width: 300px;
+        height: 20px;
+        top: 50%;
+        left: 50%;
+    }
+
+    /* stack title lines vertically instead of diagonal positioning */
+    .line-1,
+    .line-2,
+    .line-3,
+    .line-4 {
+        position: relative;
+        display: block;
+        transform: none; /* remove rotation on mobile */
+        left: auto;
+        top: auto;
+        text-align: center;
+        font-size: clamp(2rem, 10vw, 3.5rem);
+        margin: 0.2rem 0;
+    }
+
+    .site-title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.2rem;
+    }
+
+    /* move nav to bottom for easier thumb access on mobile */
+    .diagonal-nav {
+        position: fixed;
+        top: auto;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* stack nav items vertically */
+    .diagonal-nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+        font-size: clamp(0.9rem, 3vw, 1.1rem);
+    }
+
+    /* move font link to top center on mobile */
+    .font-link {
+        position: fixed;
+        top: 1.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: auto;
+        font-size: clamp(1rem, 3vw, 1.2rem);
+    }
+}
+
+/* smaller phones need even tighter sizing */
+@media (max-width: 600px) {
+    .line-1,
+    .line-2,
+    .line-3,
+    .line-4 {
+        font-size: clamp(1.8rem, 9vw, 2.5rem);
+        letter-spacing: 0.05em; /* tighter spacing to prevent overflow */
     }
 
     .diagonal-nav ul {
-        gap: clamp(0.6rem, 2vw, 1rem);
-        font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+        font-size: 0.85rem;
+        gap: 0.6rem;
+    }
+
+    .font-link {
+        font-size: 0.9rem;
+    }
+
+    .line-accent {
+        width: 200px;
+        height: 15px;
     }
 }
