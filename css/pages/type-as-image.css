@@ -1,0 +1,50 @@
+/* type as image page specific styles */
+.image-visual,
+.image-description {
+    border: 1.5px solid var(--black);
+    padding: clamp(1rem, 2.2vw, 2rem);
+    background: rgba(255, 255, 255, 0.88);
+    box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.type-flower {
+    width: min(80vw, 420px);
+    margin: 0 auto;
+    text-align: center;
+}
+
+.type-flower img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.visual-caption {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.85rem;
+    margin-top: 0.8rem;
+}
+
+.image-description h3 {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.5rem;
+}
+
+.image-subtitle {
+    font-size: 0.95rem;
+    color: rgba(26, 26, 26, 0.65);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.image-description ul {
+    margin: 1rem 0;
+    padding-left: 1.3rem;
+}
+
+.image-description li {
+    margin-bottom: 0.6rem;
+}

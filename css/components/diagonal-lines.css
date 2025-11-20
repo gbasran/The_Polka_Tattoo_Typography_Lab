@@ -1,0 +1,138 @@
+/* container for all the diagonal lines */
+.line-grid {
+    position: absolute;
+    inset: 0;
+    pointer-events: none; /* lines dont block clicking */
+}
+
+/* base styles for all diagonal lines */
+.line {
+    position: absolute;
+    height: 5px;
+    background: var(--black);
+    transform-origin: center;
+}
+
+/* main diagonal line going top-left to bottom-right */
+.line-primary {
+    top: 50%;
+    left: 50%;
+    width: var(--diagonal-width);
+    transform: translate(-50%, -50%) rotate(var(--diagonal-angle));
+}
+
+/* secondary diagonal with gap in center for title */
+.line-secondary {
+    top: 50%;
+    left: 50%;
+    width: var(--diagonal-width);
+    transform: translate(-50%, -50%) rotate(calc(-1 * var(--diagonal-angle)));
+    background: linear-gradient(
+        90deg,
+        var(--black) 0,
+        var(--black) calc(50% - var(--center-gap-top)),
+        transparent calc(50% - var(--center-gap-top)),
+        transparent calc(50% + var(--center-gap-bottom)),
+        var(--black) calc(50% + var(--center-gap-bottom)),
+        var(--black) 100%
+    );
+}
+
+/* corner diagonal lines with gaps */
+.line-corner-bottom-left,
+.line-corner-top-right {
+    width: 210%;
+    transform: rotate(calc(-1 * var(--diagonal-angle)));
+    background: linear-gradient(
+        90deg,
+        var(--black) 0,
+        var(--black) calc(50% - var(--corner-gap-large)),
+        transparent calc(50% - var(--corner-gap-large)),
+        transparent calc(50% + var(--corner-gap-large)),
+        var(--black) calc(50% + var(--corner-gap-large)),
+        var(--black) 100%
+    );
+}
+
+.line-corner-bottom-right,
+.line-corner-top-left {
+    width: 210%;
+    transform: rotate(calc(-1 * var(--diagonal-angle)));
+    background: linear-gradient(
+        90deg,
+        transparent 0,
+        transparent calc(50% - var(--corner-gap-small)),
+        var(--black) calc(50% - var(--corner-gap-small)),
+        var(--black) calc(50% + var(--corner-gap-small)),
+        transparent calc(50% + var(--corner-gap-small)),
+        transparent 100%
+    );
+}
+
+.line-corner-bottom-left {
+    top: var(--corner-bl-top);
+    left: var(--corner-bl-left);
+    width: var(--corner-bl-width);
+    transform: translate(-50%, -50%) rotate(calc(-1 * var(--diagonal-angle)));
+}
+
+.line-corner-top-right {
+    top: var(--corner-tr-top);
+    left: var(--corner-tr-left);
+    width: var(--corner-tr-width);
+    transform: translate(-50%, -50%) rotate(calc(-1 * var(--diagonal-angle)));
+}
+
+.line-corner-bottom-right {
+    bottom: -6%;
+    right: -10%;
+}
+
+.line-corner-top-left {
+    top: -6%;
+    left: -10%;
+}
+
+/* additional diagonal lines with rotation */
+.line-bottom-left-line,
+.line-bottom-right-line,
+.line-top-gap {
+    transform: translate(-50%, -50%) rotate(var(--diagonal-angle));
+}
+
+.line-bottom-left-line {
+    top: var(--bottom-left-top);
+    left: var(--bottom-left-left);
+    width: var(--bottom-left-width);
+}
+
+.line-bottom-right-line {
+    top: var(--top-bottom-right-top);
+    left: var(--top-bottom-right-left);
+    width: var(--top-bottom-right-width);
+}
+
+.line-top-gap {
+    top: var(--gap-top-position);
+    left: var(--gap-top-left);
+    width: var(--gap-top-width);
+    background: linear-gradient(
+        90deg,
+        var(--black) 0,
+        var(--black) calc(50% - var(--gap-top-size)),
+        transparent calc(50% - var(--gap-top-size)),
+        transparent calc(50% + var(--gap-top-size)),
+        var(--black) calc(50% + var(--gap-top-size)),
+        var(--black) 100%
+    );
+}
+
+/* red accent line crossing the title */
+.line-accent {
+    top: var(--accent-line-top);
+    left: var(--accent-line-left);
+    width: var(--accent-line-width);
+    height: var(--accent-line-height);
+    transform: translate(-50%, -50%) rotate(var(--diagonal-angle));
+    background: var(--accent);
+}

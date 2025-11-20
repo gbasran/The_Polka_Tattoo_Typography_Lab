@@ -1,0 +1,76 @@
+/* css custom properties for easier tweaking */
+:root {
+    /* colors */
+    --cream: #E8E3D6;
+    --black: #1a1a1a;
+    --accent: #E94D4D;
+    
+    /* shared angles and transforms */
+    --diagonal-angle: -35.5deg;
+    --diagonal-width: 141.4%;
+    
+    /* diagonal line gaps */
+    --center-gap-top: 190px;
+    --center-gap-bottom: 140px;
+    --corner-gap-large: 140px;
+    --corner-gap-small: 100px;
+
+    /* corner line positions */
+    --corner-bl-top: 88%;
+    --corner-bl-left: 20%;
+    --corner-bl-width: 80%;
+    --corner-tr-top: 12%;
+    --corner-tr-left: 80%;
+    --corner-tr-width: 70%;
+
+    /* additional line positions */
+    --bottom-left-top: 100%;
+    --bottom-left-left: 38%;
+    --bottom-left-width: 55%;
+    --top-bottom-right-top: 29%;
+    --top-bottom-right-left: 80%;
+    --top-bottom-right-width: 55%;
+
+    /* gap line settings */
+    --gap-top-position: 25%;
+    --gap-top-left: 32.5%;
+    --gap-top-width: 80%;
+    --gap-top-size: 70px;
+
+    /* accent line dimensions */
+    --accent-line-top: 41%;
+    --accent-line-left: 64.3%;
+    --accent-line-width: 540px;
+    --accent-line-height: 30px;
+
+    /* navigation positioning */
+    --nav-top: 46.75%;
+    --nav-left: 19.5%;
+
+    /* art direction label positioning */
+    --art-direction-top: 52.5%;
+    --art-direction-left: 17.5%;
+
+    /* hero type link positioning */
+    --hero-type-top: 85.5%;
+    --hero-type-left: 61.5%;
+
+    /* credits box positioning */
+    --credits-bottom: 8%;
+    --credits-right: 5%;
+
+    /* font link positioning */
+    --font-link-bottom: 4%;
+    --font-link-left: 3%;
+    
+    /* typography sizing */
+    --title-font-size: clamp(3rem, 7vw, 6rem);
+    --nav-font-size: clamp(1.1rem, 1.6vw, 1.6rem);
+    --font-link-font-size: clamp(1.2rem, 1.6vw, 1.7rem);
+
+    /* card spacing */
+    --card-gap-column: 1.8rem;
+    --card-left-column-gap: 3.55rem;
+    --card-right-column-gap: 1.8rem;
+    --card-gap-row-mobile: 1rem;
+}

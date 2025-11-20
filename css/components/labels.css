@@ -1,0 +1,79 @@
+/* label elements for hero type and art direction */
+.label {
+    position: absolute;
+    z-index: 3;
+}
+
+.label p {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.label .description-text {
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-top: 0.3rem;
+    max-width: 160px;
+}
+
+/* art direction box styled like typographic flower box */
+.art-direction-label {
+    position: absolute;
+    background: var(--cream);
+    border: 2px solid var(--black);
+    padding: 1.2rem 1.5rem;
+    z-index: 3;
+    max-width: 220px;
+    top: var(--art-direction-top);
+    left: var(--art-direction-left);
+    text-decoration: none;
+    color: var(--black);
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.art-direction-label:hover {
+    background: var(--black);
+    color: var(--cream);
+    cursor: pointer;
+}
+
+.art-direction-label:hover p,
+.art-direction-label:hover .description-text {
+    color: var(--cream);
+}
+
+.art-direction-label p {
+    color: var(--black);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 0.3rem 0;
+    line-height: 1.2;
+    transition: color 0.3s ease;
+}
+
+.art-direction-label .description-text {
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-top: 0.3rem;
+    max-width: 100%;
+    color: var(--black);
+    transition: color 0.3s ease;
+}
+
+/* font credit link in bottom left */
+.font-link {
+    position: absolute;
+    bottom: var(--font-link-bottom);
+    left: var(--font-link-left);
+    z-index: 2;
+    color: var(--black);
+    font-size: var(--font-link-font-size);
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    transition: color 0.25s ease;
+}

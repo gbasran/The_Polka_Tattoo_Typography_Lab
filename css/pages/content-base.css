@@ -1,0 +1,58 @@
+/* content page layout */
+.content-page {
+    background: var(--cream);
+    color: var(--black);
+    padding: clamp(1.5rem, 4vw, 3rem);
+}
+
+.page-hero {
+    max-width: 1150px;
+    margin: 0 auto 3rem;
+    padding: clamp(1.5rem, 3vw, 3rem);
+    border: 2px solid var(--black);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(250, 247, 238, 0.95));
+    box-shadow: 16px 16px 0 rgba(0, 0, 0, 0.15);
+}
+
+.page-tagline {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 0.8rem;
+    color: var(--accent);
+}
+
+.page-hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin-bottom: 1rem;
+}
+
+.page-intro {
+    max-width: 800px;
+    line-height: 1.6;
+    font-size: 1.05rem;
+    color: rgba(26, 26, 26, 0.85);
+}
+
+.page-content {
+    max-width: 1150px;
+    margin: 0 auto 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--card-gap-column);
+    align-items: start;
+}
+
+.left-column,
+.right-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.left-column {
+    gap: var(--card-left-column-gap);
+}
+
+.right-column {
+    gap: var(--card-right-column-gap);
+}

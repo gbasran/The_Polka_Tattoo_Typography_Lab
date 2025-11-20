@@ -1,0 +1,76 @@
+/* diagonal navigation menu */
+.diagonal-nav {
+    position: absolute;
+    top: var(--nav-top);
+    left: var(--nav-left);
+    transform: translate(-50%, -50%) rotate(var(--diagonal-angle));
+    z-index: 2; /* keep nav above decorative lines */
+}
+
+.diagonal-nav ul {
+    list-style: none;
+    display: flex;
+    gap: clamp(0.8rem, 1.2vw, 1.6rem);
+    font-size: var(--nav-font-size);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.diagonal-nav a {
+    display: inline-block;
+    padding: 0.15rem 0.2rem;
+    color: var(--black);
+    text-decoration: none;
+    transition: color 0.25s ease;
+    position: relative;
+}
+
+.diagonal-nav a::after,
+.page-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.15rem;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+/* hover states for links */
+.diagonal-nav a:is(:hover, :focus-visible),
+.font-link:is(:hover, :focus-visible) {
+    color: var(--accent);
+}
+
+.diagonal-nav a:is(:hover, :focus-visible)::after,
+.page-nav a:is(:hover, :focus-visible)::after,
+.page-nav a[aria-current="page"]::after {
+    transform: scaleX(1);
+}
+
+/* page navigation (used on about, hero, etc.) */
+.page-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-top: 1.8rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.page-nav a {
+    color: var(--black);
+    text-decoration: none;
+    padding-bottom: 0.3rem;
+    transition: color 0.2s ease;
+    position: relative;
+}
+
+.page-nav a:hover,
+.page-nav a[aria-current="page"] {
+    color: var(--black);
+}

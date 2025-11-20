@@ -1,0 +1,77 @@
+/* natural habitat page specific styles */
+.habitat-snapshot,
+.habitat-details {
+    border: 1.5px solid var(--black);
+    padding: clamp(1rem, 2.2vw, 2rem);
+    background: rgba(255, 255, 255, 0.88);
+    box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.snapshot-window {
+    border: 2px solid #d8d3c9;
+    padding: 2rem;
+    background: #ffffff;
+    position: relative;
+}
+
+.snapshot-window h2 {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    color: var(--accent);
+    margin-bottom: 0.2rem;
+}
+
+.snapshot-subtitle {
+    font-size: 1.2rem;
+    color: rgba(26, 26, 26, 0.7);
+    margin-bottom: 1.5rem;
+}
+
+.snapshot-body {
+    line-height: 1.5;
+    color: rgba(26, 26, 26, 0.8);
+}
+
+.snapshot-mouse {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.snapshot-mouse span {
+    width: 24px;
+    height: 48px;
+    border: 2px solid #c9c4bb;
+    border-radius: 14px;
+    position: relative;
+}
+
+.snapshot-mouse span::after {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    width: 2px;
+    height: 8px;
+    background: #c9c4bb;
+    transform: translateX(-50%);
+}
+
+.snapshot-source {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.habitat-details h3 {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.8rem;
+}
+
+.habitat-details ul {
+    padding-left: 1.3rem;
+    margin: 1rem 0;
+}
+
+.habitat-details li {
+    margin-bottom: 0.6rem;
+}

@@ -1,0 +1,30 @@
+/* basic resets and default stuff */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Noto Serif', serif;
+    background: var(--cream);
+    color: var(--black);
+    min-height: 100vh;
+    overflow-x: hidden; /* prevent horizontal scroll */
+    max-width: 100%;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-color: rgba(233, 77, 77, 0.4);
+    text-decoration-thickness: 1px;
+}
+
+a:hover {
+    color: var(--black);
+}

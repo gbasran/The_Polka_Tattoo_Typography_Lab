@@ -1,0 +1,312 @@
+/* mobile and tablet responsive styles */
+@media (max-width: 900px) {
+    body {
+        overflow: auto; /* allow scrolling on mobile */
+    }
+
+    .title-stage {
+        height: auto;
+        min-height: 100vh;
+        padding-bottom: 8rem;
+    }
+
+    .title-content {
+        padding: 2rem 1rem;
+        height: auto;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* hide extra diagonal lines on mobile to keep it clean */
+    .line-corner-bottom-left,
+    .line-corner-top-right,
+    .line-bottom-left-line,
+    .line-bottom-right-line,
+    .line-top-gap {
+        display: none;
+    }
+
+    /* make main diagonals wider to cover screen */
+    .line-primary {
+        width: 200%;
+    }
+
+    /* adjust center gap for smaller screens */
+    .line-secondary {
+        width: 200%;
+        background: linear-gradient(
+            90deg,
+            var(--black) 0,
+            var(--black) calc(50% - 80px),
+            transparent calc(50% - 80px),
+            transparent calc(50% + 80px),
+            var(--black) calc(50% + 80px),
+            var(--black) 100%
+        );
+    }
+
+    .line-accent {
+        width: 300px;
+        height: 20px;
+        top: 50%;
+        left: 50%;
+    }
+
+    /* stack title lines vertically instead of diagonal positioning */
+    .line-1,
+    .line-2,
+    .line-3,
+    .line-4 {
+        position: relative;
+        display: block;
+        transform: none; /* remove rotation on mobile */
+        left: auto;
+        top: auto;
+        text-align: center;
+        font-size: clamp(2rem, 10vw, 3.5rem);
+        margin: 0.2rem 0;
+    }
+
+    .site-title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.2rem;
+    }
+
+    /* move nav to bottom for easier thumb access on mobile */
+    .diagonal-nav {
+        position: fixed;
+        top: auto;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* stack nav items vertically */
+    .diagonal-nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+        font-size: clamp(0.9rem, 3vw, 1.1rem);
+    }
+
+    /* move font link to top center on mobile */
+    .font-link {
+        position: fixed;
+        top: 1.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: auto;
+        font-size: clamp(1rem, 3vw, 1.2rem);
+    }
+
+    /* hero type link positioned under noto serif centered */
+    .hero-type-link {
+        position: fixed;
+        top: 3.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: clamp(0.9rem, 3vw, 1.1rem);
+    }
+
+    /* show info boxes on mobile below title */
+    .info-box {
+        position: relative;
+        max-width: 100%;
+        margin: 2rem auto 1rem;
+        transform: none;
+        top: auto;
+        right: auto;
+        left: auto;
+    }
+
+    /* art direction box on mobile */
+    .art-direction-label {
+        position: relative;
+        max-width: 100%;
+        margin: 1rem auto 2rem;
+        transform: none;
+        top: auto;
+        left: auto;
+    }
+
+    /* credits box on mobile - bottom center, no rotation */
+    .credits-box {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        margin: 2rem auto;
+        transform: none;
+        max-width: 200px;
+    }
+
+    .content-page {
+        padding: 1.5rem;
+    }
+
+    .page-hero {
+        box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    .page-nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .page-content {
+        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .left-column,
+    .right-column {
+        display: contents;
+    }
+
+    /* hero type page mobile adjustments */
+    .hero-letter-panel {
+        min-height: 350px;
+        padding: 0.75rem;
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .hero-letter {
+        font-size: clamp(8rem, 35vw, 12rem);
+        line-height: 0.75;
+    }
+
+    .annotation {
+        font-size: 0.65rem;
+        letter-spacing: 0.08em;
+    }
+
+    .annotation-line {
+        width: 50px;
+    }
+
+    .annotation-top {
+        top: 18%;
+        right: 4%;
+    }
+
+    .annotation-middle {
+        top: 50%;
+        right: 5%;
+    }
+
+    .annotation-bottom {
+        bottom: 15%;
+        left: 5%;
+    }
+
+    /* content page credits footer on mobile */
+    .content-page .credits-box {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem;
+        margin: 2rem auto 0;
+    }
+
+    /* natural habitat snapshot responsive */
+    .snapshot-window {
+        padding: 1.5rem;
+    }
+
+    .snapshot-window h2 {
+        font-size: clamp(1.5rem, 7vw, 2rem);
+    }
+
+    .snapshot-subtitle {
+        font-size: 1rem;
+    }
+
+    .snapshot-body {
+        font-size: 0.9rem;
+    }
+
+    .type-flower {
+        width: min(80vw, 280px);
+    }
+}
+
+/* smaller phones need even tighter sizing */
+@media (max-width: 600px) {
+    .line-1,
+    .line-2,
+    .line-3,
+    .line-4 {
+        font-size: clamp(1.8rem, 9vw, 2.5rem);
+        letter-spacing: 0.05em; /* tighter spacing to prevent overflow */
+    }
+
+    .diagonal-nav ul {
+        font-size: 0.85rem;
+        gap: 0.6rem;
+    }
+
+    .font-link {
+        font-size: 0.9rem;
+    }
+
+    .line-accent {
+        width: 200px;
+        height: 15px;
+    }
+
+    .page-hero h1 {
+        font-size: clamp(2rem, 9vw, 3rem);
+    }
+
+    .page-nav {
+        font-size: 0.85rem;
+    }
+
+    .hero-letter {
+        font-size: clamp(8rem, 45vw, 12rem);
+    }
+
+    .annotation {
+        font-size: 0.65rem;
+    }
+
+    .annotation-line {
+        width: 40px;
+    }
+
+    .annotation-top {
+        top: 18%;
+        right: 3%;
+    }
+
+    .annotation-middle {
+        top: 50%;
+        right: 3%;
+    }
+
+    .annotation-bottom {
+        bottom: 12%;
+        left: 3%;
+    }
+
+    .hero-description h2 {
+        font-size: clamp(1.5rem, 7vw, 2rem);
+    }
+
+    .type-flower {
+        width: min(80vw, 280px);
+        height: min(80vw, 280px);
+    }
+}
+
+@media (min-width: 1100px) {
+    .page-content {
+        grid-template-columns: minmax(280px, 1fr) minmax(420px, 1.35fr);
+    }
+}

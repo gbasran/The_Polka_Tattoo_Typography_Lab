@@ -1,0 +1,69 @@
+/* main container for everything */
+.title-stage {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* title text container */
+.title-content {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 4vw;
+    overflow: hidden;
+}
+
+/* main title typography */
+.site-title {
+    font-size: var(--title-font-size);
+    line-height: 0.82;
+}
+
+/* each title line positioned independently along the diagonal */
+.line-1,
+.line-2,
+.line-3,
+.line-4 {
+    position: absolute;
+    font-size: var(--title-font-size);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transform: translate(-50%, 0) rotate(var(--diagonal-angle));
+}
+
+.line-1 {
+    top: calc(50% - 10rem);
+    left: 47.5%;
+}
+
+.line-2 {
+    top: calc(50% - 7.5rem);
+    left: 52%;
+}
+
+.line-3 {
+    top: calc(50% - 0.5rem);
+    left: 51.5%;
+}
+
+.line-4 {
+    top: calc(50% + 9rem);
+    left: 47.5%;
+}
+
+/* typographic flower box positioning */
+.typographic-flower-box {
+    top: 52%;
+    right: 5%;
+    transform: translateY(-50%);
+}
+
+/* hero type link positioned */
+.hero-type-link {
+    position: absolute;
+    top: var(--hero-type-top);
+    left: var(--hero-type-left);
+    transform: translate(-50%, -50%);
+}
